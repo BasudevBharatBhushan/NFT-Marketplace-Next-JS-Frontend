@@ -1,5 +1,3 @@
-import Head from "next/head"
-import Image from "next/image"
 import styles from "../styles/Home.module.css"
 import { Form, useNotification, Button } from "web3uikit"
 import { useMoralis, useWeb3Contract } from "react-moralis"
@@ -11,8 +9,8 @@ import { useEffect, useState } from "react"
 
 export default function Home() {
     const { chainId, account, isWeb3Enabled } = useMoralis()
-    const chainString = chainId ? parseInt(chainId).toString() : "31337"
-    const marketplaceAddress = networkMapping[chainString].NftMarketplace[0]
+    const chainString = chainId ? parseInt(chainId).toString() : null
+    const marketplaceAddress = chainId ? networkMapping[chainString].NftMarketplace[0] : null
     const dispatch = useNotification()
     const [proceeds, setProceeds] = useState("0")
 
